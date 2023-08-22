@@ -36,4 +36,3 @@ When you submit this issue, please use the format below to create a complete new
 
 ## Caveats
 <!--- describe any changes, made or deleted here -->
-
