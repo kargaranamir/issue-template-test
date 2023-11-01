@@ -3,6 +3,7 @@ name: "bug report"
 about: "please add your bug report here"
 title: "bug report: you must use some other language"
 labels: bug, needs triage
+assignees: kargaranamir
 ---
 
 Thank you for reporting your bug. 
