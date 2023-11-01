@@ -1,4 +1,152 @@
+
 ---
-name: bug4
-about: add bug
+name: Cut a release
+about: Create a tracking issue for a release cut
+title: Cut v1.x.y-{alpha,beta,rc}.z release
+labels: sig/release, area/release-eng
+assignees: ''
 ---
+## Scheduled to happen: <!-- Tue, 2021-MM-DD -->
+
+_Note for v1.x.0 releases: Having this issue in open state will stop the
+periodic run of [`krel fast-forward`](<|URL|>)
+to avoid conflicts with releases running in parallel. The fast-forward will
+automatically stop once the v1.x.0 tag is available._
+
+## Release Blocking Issues
+<!--
+
+Make a list of anything preventing the release to start
+(failing tests, pending image bumps, etc) and link them
+to the relevant GitHub issues:
+
+- [ ] Issue 1
+- [ ] Issue 2
+
+-->
+
+<!--
+
+Release Process Steps:
+======================
+
+Create a thread on #release-management on Slack to notify updates
+about the release. For example,
+- <|URL|>
+- <|URL|>
+
+- Add/Remove items of the checklist as you see fit
+- Post bumps or issues encountered along the way
+
+Hints and pointers to docs for each step of the release process:
+
+Screenshot Testgrid Boards:
+Use `krel testgridshot` to automatically create the screenshots
+<|URL|>
+
+Stage and Release (mock and nomock):
+Use `krel stage` && `krel release` see the handbook for more:
+<|URL|>
+
+Image promotion:
+Use `kpromo pr` to create a pull request
+<|URL|>
+
+Notify #release-management on Slack:
+Announce the release in a message in the Channel and paste the link
+Direct link to slack: <|URL|>
+
+Publish packages (skip for prereleases):
+Coordinate with @google-build-admin before starting. Once the
+NoMock Release is done (which builds the packages to the production bucket) and
+**before sending the announcement** notify @google-build-admin to start
+publishing the packages.
+
+Send notification:
+Use `krel announce` using your Sendgrid token
+<|URL|>
+
+Collect Metrics:
+Run krel history --branch <|URL|> --date-from 2021-mm-dd
+<|URL|>
+
+Finish post-release branch creation tasks:    ← Only for rc.0 release
+See the Branch Creation section of the handbook for more details:
+<|URL|>
+
+Help? Ring @release-managers on slack!
+
+-->
+
+## Release Steps
+
+- [ ] Create a thread on #release-management: <!-- Paste link to slack -->
+- [ ] Screenshot unhealthy release branch testgrid boards
+- Mock Run
+- [ ] Stage
+- [ ] Release
+- NoMock Run
+- [ ] Stage
+- [ ] Image Promotion: <!-- Paste Pull Request URL here -->
+- [ ] Release
+- [ ] Publish packages (debs & rpms) <!-- REMOVE THIS STEP FOR PRE-RELEASES -->
+- [ ] Notify #release-management: <!-- Paste link to slack -->
+- [ ] Send notification: <!-- Paste link to kubernetes-dev email -->
+- [ ] Collect metrics and add them to the `Release steps` table below
+<!-- ONLY FOR RC.0 RELEASE - [ ] Finish post-release branch creation tasks -->
+
+## Release Tools Version
+
+<!-- Replace with output of `krel version` -->
+```
+<|Code|>
+```
+
+## Release Jobs History
+
+<!-- The following table can be automatically generated using krel --history  -->
+| Step | Command | Link | Start | Duration | Succeeded? |
+| --- | --- | --- | --- | --- | --- |
+| Mock stage | `krel stage [arguments]` | | | | |
+| Mock release | `krel release [arguments]` | | | | |
+| Stage | `krel stage [arguments]` | | | | |
+| Release | `krel release [arguments]` | | | | |
+
+## Action Items
+
+<!--
+During the release, you may find a few things that require updates
+(process changes, documentation updates, fixes to release tooling).
+
+Please list them here.
+
+It will be your responsibility to open issues/PRs to resolve these
+issues/improvements. Keep this issue open until these action items
+are complete.
+
+- [ ] Item 1
+- [ ] Item 2
+- [ ] Item 3
+-->
+
+## Open Questions
+
+<!--
+During the release, you may have a few questions that you can't
+answer yourself or may require group discussion.
+
+Please list them here.
+
+Follow up with Branch Managers/Patch Release Team/Release Engineering
+subproject owners to get these questions answered.
+
+- [ ] Item 1
+- [ ] Item 2
+- [ ] Item 3
+-->
+
+/milestone <!-- v1.x e.g. v1.14 -->
+/assign <!-- @ the Release Manager responsible for this release -->
+/cc @kubernetes/release-managers
+/priority important-soon
+/kind documentation
