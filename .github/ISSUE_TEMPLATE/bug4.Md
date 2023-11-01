@@ -1,4 +1,3 @@
-
 ---
 name: Cut a release
 about: Create a tracking issue for a release cut
